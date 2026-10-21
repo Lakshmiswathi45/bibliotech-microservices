@@ -1,0 +1,1 @@
+package com.bibliotech.fine;import org.springframework.boot.*;import org.springframework.boot.autoconfigure.*;@SpringBootApplication public class FineServiceApplication{public static void main(String[]a){SpringApplication.run(FineServiceApplication.class,a);}}

@@ -1,0 +1,97 @@
+𝗘𝗻𝘁𝗲𝗿𝗽𝗿𝗶𝘀𝗲 𝗔𝗰𝗮𝗱𝗲𝗺𝗶𝗰 𝗥𝗲𝘀𝗼𝘂𝗿𝗰𝗲 & 𝗖𝗶𝗿𝗰𝘂𝗹𝗮𝘁𝗶𝗼𝗻 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 – 𝗨𝘀𝗲𝗿 𝗦𝘂𝗿𝘃𝗲𝘆
+
+Register:
+{
+  "name": "Library Admin",
+  "email": "libraryadmin@bibliotech.com",
+  "password": "Admin@123",
+  "role": "ADMIN"
+}
+
+
+
+Login:
+{
+  "email": "libraryadmin@bibliotech.com",
+  "password": "Admin@123"
+}
+
+
+
+POST /books
+
+Enter:
+
+{
+  "id":3,
+  "title": "Python Programming",
+  "author": "Mark Lutz",
+  "isbn": "9781449355739",
+  "category": "Programming",
+  "totalCopies": 5
+}
+
+
+
+
+Get All Books
+
+GET /books
+
+
+
+RENTAL SERVICE
+
+POST /rentals/borrow:
+
+{
+  "userId": YOUR_USER_ID,
+  "bookId": 3,
+  "loanDays": 14
+}
+
+
+POST /rentals/return/{id}
+
+
+Click Try it out.
+
+If your borrow response gave:
+
+Rental ID = 1
+
+enter:
+
+1
+
+as the id.
+
+Then click Execute.
+
+
+
+4. 💰 FINE SERVICE
+
+{
+  "additionalProp1": "2",
+  "additionalProp2": "3",
+  "additionalProp3": "1"
+}
+
+5. 🔔 NOTIFICATION SERVICE
+
+
+
+  USE bibliotech;
+ SHOW TABLES;
+
+USE bibliotech; SELECT * FROM book;
+
+USE bibliotech; SELECT * FROM rental;
+
+USE bibliotech; SELECT * FROM fine;
+
+USE bibliotech; SELECT * FROM notification;
+
+
+𝗘𝗻𝘁𝗲𝗿𝗽𝗿𝗶𝘀𝗲 𝗔𝗰𝗮𝗱𝗲𝗺𝗶𝗰 𝗥𝗲𝘀𝗼𝘂𝗿𝗰𝗲 & 𝗖𝗶𝗿𝗰𝘂𝗹𝗮𝘁𝗶𝗼𝗻 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 – 𝗨𝘀𝗲𝗿 𝗦𝘂𝗿𝘃𝗲𝘆**

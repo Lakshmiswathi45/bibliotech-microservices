@@ -1,0 +1,668 @@
+========================================================
+BIBLIOTECH - REVIEW 1 DEMO
+COPY-PASTE CHEAT SHEET
+========================================================
+
+
+PROJECT FOLDER
+C:\Users\Swathi\OneDrive\Desktop\bibliotech-microservices
+
+
+========================================================
+MICROSERVICES
+========================================================
+
+AUTH SERVICE          8081
+BOOK SERVICE          8082
+RENTAL SERVICE        8083
+FINE SERVICE          8084
+NOTIFICATION SERVICE  8085
+
+API GATEWAY            8080
+EUREKA SERVER          8761
+
+
+========================================================
+1. EUREKA SERVER
+========================================================
+
+VS CODE TERMINAL 1
+
+cd C:\Users\Swathi\OneDrive\Desktop\bibliotech-microservices\eureka-server
+
+..\.tools\apache-maven-3.9.9\bin\mvn.cmd spring-boot:run
+
+
+LINK:
+http://localhost:8761
+
+
+========================================================
+2. AUTH SERVICE
+========================================================
+
+VS CODE TERMINAL 2
+
+cd C:\Users\Swathi\OneDrive\Desktop\bibliotech-microservices\auth-service
+
+..\.tools\apache-maven-3.9.9\bin\mvn.cmd spring-boot:run
+
+
+LINK:
+http://localhost:8081/swagger-ui.html
+
+
+========================================================
+3. BOOK SERVICE
+========================================================
+
+VS CODE TERMINAL 3
+
+cd C:\Users\Swathi\OneDrive\Desktop\bibliotech-microservices\book-service
+
+..\.tools\apache-maven-3.9.9\bin\mvn.cmd spring-boot:run
+
+
+LINK:
+http://localhost:8082/swagger-ui.html
+
+
+========================================================
+4. RENTAL SERVICE
+========================================================
+
+VS CODE TERMINAL 4
+
+cd C:\Users\Swathi\OneDrive\Desktop\bibliotech-microservices\rental-service
+
+..\.tools\apache-maven-3.9.9\bin\mvn.cmd spring-boot:run
+
+
+LINK:
+http://localhost:8083/swagger-ui.html
+
+
+========================================================
+5. FINE SERVICE
+========================================================
+
+IMPORTANT:
+FINE SERVICE IS ALREADY RUNNING ON 8084.
+DO NOT START ANOTHER COPY.
+
+CHECK:
+
+netstat -ano | findstr :8084
+
+
+LINK:
+http://localhost:8084/swagger-ui.html
+
+
+========================================================
+6. NOTIFICATION SERVICE
+========================================================
+
+VS CODE TERMINAL 6
+
+cd C:\Users\Swathi\OneDrive\Desktop\bibliotech-microservices\notification-service
+
+..\.tools\apache-maven-3.9.9\bin\mvn.cmd spring-boot:run
+
+
+LINK:
+http://localhost:8085/swagger-ui.html
+
+
+========================================================
+7. API GATEWAY
+========================================================
+
+VS CODE TERMINAL 7
+
+cd C:\Users\Swathi\OneDrive\Desktop\bibliotech-microservices\api-gateway
+
+..\.tools\apache-maven-3.9.9\bin\mvn.cmd spring-boot:run
+
+
+LINK:
+http://localhost:8080
+
+
+========================================================
+NEW ADMIN DETAILS
+========================================================
+
+Name:
+Library Admin
+
+Email:
+libraryadmin@bibliotech.com
+
+Password:
+Admin@123
+
+Role:
+ADMIN
+
+
+========================================================
+REGISTER ADMIN
+========================================================
+
+AUTH SWAGGER:
+
+http://localhost:8081/swagger-ui.html
+
+
+POST /auth/register
+
+{
+  "name": "Library Admin",
+  "email": "libraryadmin@bibliotech.com",
+  "password": "Admin@123",
+  "role": "ADMIN"
+}
+
+
+========================================================
+LOGIN ADMIN
+========================================================
+
+POST /auth/login
+
+{
+  "email": "libraryadmin@bibliotech.com",
+  "password": "Admin@123"
+}
+
+
+SAVE:
+
+ADMIN USER ID = __________
+
+ADMIN JWT = ______________________________
+
+
+========================================================
+NEW USER DETAILS
+========================================================
+
+Name:
+Demo User
+
+Email:
+studentdemo@bibliotech.com
+
+Password:
+Demo@123
+
+Role:
+USER
+
+
+========================================================
+REGISTER USER
+========================================================
+
+AUTH SWAGGER:
+
+http://localhost:8081/swagger-ui.html
+
+
+POST /auth/register
+
+{
+  "name": "Demo User",
+  "email": "studentdemo@bibliotech.com",
+  "password": "Demo@123",
+  "role": "USER"
+}
+
+
+========================================================
+LOGIN USER
+========================================================
+
+POST /auth/login
+
+{
+  "email": "studentdemo@bibliotech.com",
+  "password": "Demo@123"
+}
+
+
+SAVE:
+
+DEMO USER ID = __________
+
+DEMO USER JWT = ______________________________
+
+
+========================================================
+NEW BOOK
+========================================================
+
+Title:
+Python Programming
+
+Author:
+Mark Lutz
+
+ISBN:
+9781449355739
+
+Category:
+Programming
+
+Total Copies:
+5
+
+
+========================================================
+CREATE BOOK
+========================================================
+
+BOOK SWAGGER:
+
+http://localhost:8082/swagger-ui.html
+
+
+CLICK:
+
+Authorize
+
+PASTE ONLY ADMIN JWT
+
+DO NOT TYPE:
+Bearer
+
+
+POST /books
+
+{
+  "title": "Python Programming",
+  "author": "Mark Lutz",
+  "isbn": "9781449355739",
+  "category": "Programming",
+  "totalCopies": 5
+}
+
+
+SAVE:
+
+PYTHON BOOK ID = __________
+
+
+========================================================
+GET BOOKS
+========================================================
+
+BOOK SWAGGER:
+
+http://localhost:8082/swagger-ui.html
+
+
+GET /books
+
+
+CHECK:
+
+Python Programming
+Mark Lutz
+Programming
+Total Copies = 5
+
+
+========================================================
+API GATEWAY TEST
+========================================================
+
+USE CMD
+
+curl -i -H "Authorization: Bearer YOUR_ADMIN_JWT" http://localhost:8080/books
+
+
+REPLACE:
+
+YOUR_ADMIN_JWT
+
+WITH YOUR ACTUAL ADMIN JWT.
+
+
+EXPECTED:
+
+HTTP/1.1 200 OK
+
+
+========================================================
+BORROW BOOK
+========================================================
+
+RENTAL SWAGGER:
+
+http://localhost:8083/swagger-ui.html
+
+
+AUTHORIZE:
+
+PASTE USER JWT ONLY
+
+DO NOT TYPE:
+Bearer
+
+
+POST /rentals/borrow
+
+
+USE YOUR ACTUAL IDS:
+
+{
+  "userId": YOUR_USER_ID,
+  "bookId": YOUR_BOOK_ID,
+  "loanDays": 14
+}
+
+
+SAVE:
+
+RENTAL ID = __________
+
+
+========================================================
+CHECK BOOK AVAILABILITY
+========================================================
+
+BOOK SWAGGER:
+
+http://localhost:8082/swagger-ui.html
+
+
+GET /books
+
+
+BEFORE BORROW:
+
+availableCopies = 5
+
+
+AFTER BORROW:
+
+availableCopies = 4
+
+
+========================================================
+RETURN BOOK
+========================================================
+
+RENTAL SWAGGER:
+
+http://localhost:8083/swagger-ui.html
+
+
+POST /rentals/return/{id}
+
+
+USE:
+
+YOUR RENTAL ID
+
+
+Example:
+
+/rentals/return/1
+
+
+========================================================
+CHECK AVAILABILITY AFTER RETURN
+========================================================
+
+BOOK SWAGGER:
+
+http://localhost:8082/swagger-ui.html
+
+
+GET /books
+
+
+AFTER RETURN:
+
+availableCopies = 5
+
+
+========================================================
+FINE SERVICE
+========================================================
+
+LINK:
+
+http://localhost:8084/swagger-ui.html
+
+
+AUTHORIZE:
+
+JWT TOKEN ONLY
+
+
+USE THE FINE ENDPOINT SHOWN IN SWAGGER.
+
+
+========================================================
+NOTIFICATION SERVICE
+========================================================
+
+LINK:
+
+http://localhost:8085/swagger-ui.html
+
+
+AUTHORIZE:
+
+JWT TOKEN ONLY
+
+
+GET /notifications/user/{userId}
+
+
+USE:
+
+YOUR DEMO USER ID
+
+
+Example:
+
+/notifications/user/2
+
+
+========================================================
+MYSQL
+========================================================
+
+OPEN NEW CMD
+
+
+mysql -u root -p
+
+
+PASSWORD:
+
+root
+
+
+========================================================
+SELECT DATABASE
+========================================================
+
+USE bibliotech;
+
+
+========================================================
+SHOW TABLES
+========================================================
+
+SHOW TABLES;
+
+
+EXPECTED:
+
+book
+fine
+notification
+rental
+users
+
+
+========================================================
+SHOW USERS
+========================================================
+
+SELECT id, name, email, role FROM users;
+
+
+========================================================
+SHOW BOOKS
+========================================================
+
+SELECT * FROM book;
+
+
+========================================================
+SHOW RENTALS
+========================================================
+
+SELECT * FROM rental;
+
+
+========================================================
+SHOW FINES
+========================================================
+
+SELECT * FROM fine;
+
+
+========================================================
+SHOW NOTIFICATIONS
+========================================================
+
+SELECT * FROM notification;
+
+
+========================================================
+CHECK BOOK AVAILABILITY
+========================================================
+
+SELECT id, title, total_copies, available_copies FROM book;
+
+
+========================================================
+SAVE THESE IDS AFTER CREATION
+========================================================
+
+ADMIN USER ID  = __________
+
+DEMO USER ID   = __________
+
+PYTHON BOOK ID = __________
+
+RENTAL ID      = __________
+
+
+========================================================
+LINKS TO KEEP OPEN
+========================================================
+
+EUREKA:
+http://localhost:8761
+
+AUTH:
+http://localhost:8081/swagger-ui.html
+
+BOOK:
+http://localhost:8082/swagger-ui.html
+
+RENTAL:
+http://localhost:8083/swagger-ui.html
+
+FINE:
+http://localhost:8084/swagger-ui.html
+
+NOTIFICATION:
+http://localhost:8085/swagger-ui.html
+
+GATEWAY:
+http://localhost:8080
+
+
+========================================================
+FINAL DEMO ORDER
+========================================================
+
+1. EUREKA
+
+2. ADMIN LOGIN
+   Show JWT
+
+3. USER REGISTER + LOGIN
+
+4. BOOK SERVICE
+   Create Python Programming
+
+5. GET /books
+
+6. API GATEWAY
+   /books -> 200 OK
+
+7. RENTAL
+   Borrow Python Programming
+
+8. BOOK
+   availableCopies 5 -> 4
+
+9. RENTAL
+   Return book
+
+10. BOOK
+    availableCopies 4 -> 5
+
+11. FINE SERVICE
+
+12. NOTIFICATION SERVICE
+
+13. MYSQL
+    SHOW TABLES
+    USERS
+    BOOK
+    RENTAL
+    FINE
+    NOTIFICATION
+
+
+========================================================
+IMPORTANT JWT RULE
+========================================================
+
+IN SWAGGER:
+
+PASTE ONLY JWT
+
+CORRECT:
+
+eyJhbGciOiJIUzM4NCJ9...........
+
+
+WRONG:
+
+Bearer eyJhbGciOiJIUzM4NCJ9...........
+
+
+SWAGGER AUTOMATICALLY ADDS "Bearer".
+
+
+IN CMD CURL:
+
+USE:
+
+-H "Authorization: Bearer YOUR_JWT"
+
+
+========================================================

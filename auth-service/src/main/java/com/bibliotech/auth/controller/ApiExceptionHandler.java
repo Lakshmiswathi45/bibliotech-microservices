@@ -1,0 +1,1 @@
+package com.bibliotech.auth.controller; import org.springframework.http.*; import org.springframework.web.bind.annotation.*; @RestControllerAdvice public class ApiExceptionHandler {@ExceptionHandler(IllegalArgumentException.class) ResponseEntity<String> bad(IllegalArgumentException e){return ResponseEntity.badRequest().body(e.getMessage());}}

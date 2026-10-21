@@ -1,0 +1,1 @@
+package com.bibliotech.notification.repository;import com.bibliotech.notification.entity.Notification;import java.util.*;import org.springframework.data.jpa.repository.JpaRepository;public interface NotificationRepository extends JpaRepository<Notification,Long>{List<Notification>findByUserId(Long id);}

@@ -1,0 +1,14 @@
+.m2/
+.tools/
+.vscode/
+**/target/
+node_modules/
+**/node_modules/
+frontend/dist/
+.env
+.env.*
+!.env.example
+*.log
+*.err
+.DS_Store
+Thumbs.db

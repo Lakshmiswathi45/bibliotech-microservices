@@ -1,0 +1,1 @@
+package com.bibliotech.book; import org.springframework.boot.*; import org.springframework.boot.autoconfigure.*; @SpringBootApplication public class BookServiceApplication{public static void main(String[]a){SpringApplication.run(BookServiceApplication.class,a);}}
